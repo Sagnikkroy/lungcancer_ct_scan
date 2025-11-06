@@ -39,3 +39,45 @@ lung_cancer_dataset/
 ├── image1.png
 └── ...
 
+
+## Installation & Setup
+
+### Prerequisites
+- Python 3.8+
+- pip package manager
+- NVIDIA GPU (optional, for faster training)
+
+### Installation Steps
+
+1. **Extract the submission files**
+   ```bash
+   # Extract the zip file to your desired location
+
+   Install dependencies
+   pip install -r requirements.txt
+
+   Download and prepare the dataset
+
+Download from: https://www.kaggle.com/datasets/mdnafeesimtiaz/ct-scan-images-of-lung-cancer
+
+Extract the dataset and place it in your working directory
+
+Ensure the folder structure matches the expected format
+
+How to Run
+Training the Model
+bash
+python lung_cancer_classifier.py
+The script will automatically:
+
+Load and preprocess all CT scan images
+
+Split data into training (80%) and validation (20%) sets
+
+Train a ResNet18-based model with transfer learning
+
+Save the best model as best_lung_cancer_model.pth
+
+Generate evaluation plots and metrics
+
+Save the final model as final_lung_cancer_model.pth
