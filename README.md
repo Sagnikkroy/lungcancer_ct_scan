@@ -1,28 +1,41 @@
 # Lung Cancer CT Scan Classification
 
 ## Project Overview
-This project implements a deep learning classifier to detect lung cancer types from CT scan images using PyTorch. The model classifies CT scans into three categories: Adenocarcinoma, Large Cell Carcinoma, and Squamous Cell Carcinoma.
+This project implements a deep learning classifier to detect and classify lung cancer types from CT scan images using PyTorch. The model classifies CT scans into five categories: Adenocarcinoma, Large Cell Carcinoma, Squamous Cell Carcinoma, Normal Cases, and Benign Cases.
 
 ## Dataset Information
 - **Dataset**: CT Scan Images of Lung Cancer
 - **Source**: [Kaggle Dataset](https://www.kaggle.com/datasets/mdnafeesimtiaz/ct-scan-images-of-lung-cancer)
-- **Classes**: 3
+- **Classes**: 5
   - Adenocarcinoma
-  - Large Cell Carcinoma 
+  - Large Cell Carcinoma
   - Squamous Cell Carcinoma
-- **Total Images**: ~1,000+ CT scan images
+  - Normal Cases
+  - Benign Cases
+- **Total Images**: 1,535 CT scan images
+- **Class Distribution**:
+  - Adenocarcinoma: 337 images
+  - Large Cell Carcinoma: 187 images
+  - Squamous Cell Carcinoma: 260 images
+  - Normal Cases: 631 images
+  - Benign Cases: 120 images
 
 ### Dataset Structure
-
-ct-scan-images-of-lung-cancer/
+lung_cancer_dataset/
 ├── adenocarcinoma/
 │ ├── image1.png
 │ ├── image2.png
 │ └── ...
-├── large.cell.carcinoma/
+├── large cell carcinoma/
 │ ├── image1.png
 │ └── ...
-└── squamous.cell.carcinoma/
+├── squamous cell carcinoma/
+│ ├── image1.png
+│ └── ...
+├── normal cases/
+│ ├── image1.png
+│ └── ...
+└── benign cases/
 ├── image1.png
 └── ...
 
@@ -30,39 +43,34 @@ ct-scan-images-of-lung-cancer/
 ## Installation & Setup
 
 ### Prerequisites
-- Python 3.7+
+- Python 3.8+
 - pip package manager
+- NVIDIA GPU (optional, for faster training)
 
 ### Installation Steps
 
-1. **Clone or download the project files**
-
+1. **Extract the submission files**
    ```bash
    # Extract the zip file to your desired location
-Create a virtual environment (recommended)
 
-bash
-python -m venv lung_cancer_env
-source lung_cancer_env/bin/activate  # On Windows: lung_cancer_env\Scripts\activate
-Install dependencies
+   Install dependencies
+   pip install -r requirements.txt
 
-bash
-pip install -r requirements.txt
-Download the dataset
+   Download and prepare the dataset
 
 Download from: https://www.kaggle.com/datasets/mdnafeesimtiaz/ct-scan-images-of-lung-cancer
 
-Extract the dataset and place it in the project directory
+Extract the dataset and place it in your working directory
 
-Update the data_dir path in lung_cancer_classifier.py if needed
+Ensure the folder structure matches the expected format
 
 How to Run
 Training the Model
 bash
 python lung_cancer_classifier.py
-The script will:
+The script will automatically:
 
-Load and preprocess the CT scan images
+Load and preprocess all CT scan images
 
 Split data into training (80%) and validation (20%) sets
 
@@ -72,57 +80,4 @@ Save the best model as best_lung_cancer_model.pth
 
 Generate evaluation plots and metrics
 
-Expected Output
-Training progress with loss and accuracy metrics
-
-Training history plot (training_history.png)
-
-Confusion matrix (confusion_matrix.png)
-
-ROC curves (roc_curves.png)
-
-Classification report in terminal
-
-File Descriptions
-lung_cancer_classifier.py - Main training and evaluation script
-
-requirements.txt - Python dependencies
-
-README.md - This documentation file
-
-Analysis_Report.pdf - Comprehensive analysis of results
-
-Model Architecture
-Backbone: ResNet18 (pretrained on ImageNet)
-
-Transfer Learning: Frozen early layers, fine-tuned later layers
-
-Classifier: Custom fully connected layers with dropout
-
-Input Size: 224x224 RGB images
-
-Output: 3-class softmax classifier
-
-Training Configuration
-Batch Size: 32
-
-Learning Rate: 0.001 with ReduceLROnPlateau scheduling
-
-Epochs: 30
-
-Optimizer: Adam with weight decay
-
-Loss Function: Cross Entropy Loss
-
-Performance Metrics
-The model evaluation includes:
-
-Accuracy and Loss curves
-
-Confusion Matrix
-
-ROC curves and AUC scores
-
-Precision, Recall, F1-score per class
-
-Overall classification report
+Save the final model as final_lung_cancer_model.pth
