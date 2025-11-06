@@ -13,3 +13,16 @@ This project implements a deep learning classifier to detect lung cancer types f
 - **Total Images**: ~1,000+ CT scan images
 
 ### Dataset Structure
+
+ct-scan-images-of-lung-cancer/
+├── adenocarcinoma/
+│ ├── image1.png
+│ ├── image2.png
+│ └── ...
+├── large.cell.carcinoma/
+│ ├── image1.png
+│ └── ...
+└── squamous.cell.carcinoma/
+├── image1.png
+└── ...
+
